@@ -17,6 +17,8 @@
 		136A03C02568F924004F6D94 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03BF2568F924004F6D94 /* HomeViewModel.swift */; };
 		136A03C32568F92F004F6D94 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03C22568F92F004F6D94 /* HomeController.swift */; };
 		136A03C92568FD5E004F6D94 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03C82568FD5E004F6D94 /* Launch.swift */; };
+		136A03CD25690B19004F6D94 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03CC25690B19004F6D94 /* Endpoint.swift */; };
+		136A03D125690CAA004F6D94 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03D025690CAA004F6D94 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		136A03BF2568F924004F6D94 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		136A03C22568F92F004F6D94 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		136A03C82568FD5E004F6D94 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		136A03CC25690B19004F6D94 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		136A03D025690CAA004F6D94 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				136A03B32568F878004F6D94 /* Models */,
+				136A03CB25690AA6004F6D94 /* Networking */,
 				136A03AD2568F84D004F6D94 /* Resources */,
 				136A03AE2568F854004F6D94 /* Supports */,
 				136A03AF2568F85C004F6D94 /* UI */,
@@ -144,8 +149,8 @@
 		136A03B62568F8B3004F6D94 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				136A03BF2568F924004F6D94 /* HomeViewModel.swift */,
 				136A03C22568F92F004F6D94 /* HomeController.swift */,
+				136A03BF2568F924004F6D94 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -157,6 +162,15 @@
 				136A03BC2568F918004F6D94 /* DetailViewModel.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		136A03CB25690AA6004F6D94 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				136A03CC25690B19004F6D94 /* Endpoint.swift */,
+				136A03D025690CAA004F6D94 /* Service.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +245,10 @@
 			files = (
 				136A03982568F82F004F6D94 /* AppDelegate.swift in Sources */,
 				136A03BA2568F90A004F6D94 /* DetailController.swift in Sources */,
+				136A03CD25690B19004F6D94 /* Endpoint.swift in Sources */,
 				136A03C32568F92F004F6D94 /* HomeController.swift in Sources */,
 				136A039A2568F82F004F6D94 /* SceneDelegate.swift in Sources */,
+				136A03D125690CAA004F6D94 /* Service.swift in Sources */,
 				136A03C92568FD5E004F6D94 /* Launch.swift in Sources */,
 				136A03C02568F924004F6D94 /* HomeViewModel.swift in Sources */,
 				136A03BD2568F918004F6D94 /* DetailViewModel.swift in Sources */,
