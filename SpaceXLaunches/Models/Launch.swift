@@ -11,14 +11,14 @@ import Foundation
 
 struct Launch: Codable {
   // Properties
-  var flightNumber: Int
-  var launchSuccess: Bool
-  var missionName: String
-  var details: String
-  var launchYear, launchDateUTC, launchDateLocal: String
-  var links: Links
-  var rocket: Rocket
-  var launchFailureDetails: LaunchFailureDetails
+  var flightNumber: Int?
+  var launchSuccess: Bool?
+  var missionName: String?
+  var details: String?
+  var launchYear, launchDateUTC, launchDateLocal: String?
+  var links: Links?
+  var rocket: Rocket?
+  var launchFailureDetails: LaunchFailureDetails?
   
   // CodingKeys
   enum CodingKeys: String, CodingKey {
@@ -40,8 +40,8 @@ struct Launch: Codable {
 
 struct Links: Codable {
   // Properties
-  var missionPatch, missionPatchSmall: String
-  var wikipedia, videoLink: String
+  var missionPatch, missionPatchSmall: String?
+  var wikipedia, videoLink: String?
   
   // CodingKeys
   enum CodingKeys: String, CodingKey {
@@ -56,7 +56,7 @@ struct Links: Codable {
 
 struct Rocket: Codable {
   // Properties
-  var rocketID, rocketName, rocketType: String
+  var rocketID, rocketName, rocketType: String?
   
   // CodingKeys
   enum CodingKeys: String, CodingKey {
@@ -70,6 +70,11 @@ struct Rocket: Codable {
 
 struct LaunchFailureDetails: Codable {
   // Properties
-  var time: Int
-  var reason: String
+  var time: Int?
+  var reason: String?
+  
+  enum CodingKeys: String, CodingKey {
+    case time
+    case reason
+  }
 }
