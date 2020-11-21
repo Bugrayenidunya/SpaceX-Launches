@@ -16,6 +16,7 @@
 		136A03BD2568F918004F6D94 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03BC2568F918004F6D94 /* DetailViewModel.swift */; };
 		136A03C02568F924004F6D94 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03BF2568F924004F6D94 /* HomeViewModel.swift */; };
 		136A03C32568F92F004F6D94 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03C22568F92F004F6D94 /* HomeController.swift */; };
+		136A03C92568FD5E004F6D94 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03C82568FD5E004F6D94 /* Launch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		136A03BC2568F918004F6D94 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		136A03BF2568F924004F6D94 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		136A03C22568F92F004F6D94 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		136A03C82568FD5E004F6D94 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		136A03B32568F878004F6D94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				136A03C82568FD5E004F6D94 /* Launch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				136A03BA2568F90A004F6D94 /* DetailController.swift in Sources */,
 				136A03C32568F92F004F6D94 /* HomeController.swift in Sources */,
 				136A039A2568F82F004F6D94 /* SceneDelegate.swift in Sources */,
+				136A03C92568FD5E004F6D94 /* Launch.swift in Sources */,
 				136A03C02568F924004F6D94 /* HomeViewModel.swift in Sources */,
 				136A03BD2568F918004F6D94 /* DetailViewModel.swift in Sources */,
 			);
