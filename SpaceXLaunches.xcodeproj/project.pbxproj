@@ -19,6 +19,11 @@
 		136A03C92568FD5E004F6D94 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03C82568FD5E004F6D94 /* Launch.swift */; };
 		136A03CD25690B19004F6D94 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03CC25690B19004F6D94 /* Endpoint.swift */; };
 		136A03D125690CAA004F6D94 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03D025690CAA004F6D94 /* Service.swift */; };
+		136A03D425692809004F6D94 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03D325692809004F6D94 /* Constant.swift */; };
+		136A03D825692824004F6D94 /* StoryboardId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03D725692824004F6D94 /* StoryboardId.swift */; };
+		136A03DB25692954004F6D94 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03DA25692954004F6D94 /* HomeTableViewCell.swift */; };
+		136A03DE2569298A004F6D94 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A03DD2569298A004F6D94 /* UI.swift */; };
+		23723D767EFF7C6347571FF3 /* Pods_SpaceXLaunches.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C420B00D11DE5AD3D3890C64 /* Pods_SpaceXLaunches.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,13 @@
 		136A03C82568FD5E004F6D94 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		136A03CC25690B19004F6D94 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		136A03D025690CAA004F6D94 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		136A03D325692809004F6D94 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		136A03D725692824004F6D94 /* StoryboardId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardId.swift; sourceTree = "<group>"; };
+		136A03DA25692954004F6D94 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		136A03DD2569298A004F6D94 /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		313E0836F2709EF68E2942E5 /* Pods-SpaceXLaunches.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXLaunches.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXLaunches/Pods-SpaceXLaunches.debug.xcconfig"; sourceTree = "<group>"; };
+		C420B00D11DE5AD3D3890C64 /* Pods_SpaceXLaunches.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceXLaunches.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3C0290723832ABC09E54074 /* Pods-SpaceXLaunches.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXLaunches.release.xcconfig"; path = "Target Support Files/Pods-SpaceXLaunches/Pods-SpaceXLaunches.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23723D767EFF7C6347571FF3 /* Pods_SpaceXLaunches.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +67,8 @@
 			children = (
 				136A03962568F82F004F6D94 /* SpaceXLaunches */,
 				136A03952568F82F004F6D94 /* Products */,
+				15D8B37A83EB861718A814C3 /* Pods */,
+				A653250158D0578947208C75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,8 +124,8 @@
 		136A03B02568F860004F6D94 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				136A03B22568F86D004F6D94 /* Extensions */,
 				136A03B12568F866004F6D94 /* Constants */,
+				136A03B22568F86D004F6D94 /* Extensions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -118,6 +133,9 @@
 		136A03B12568F866004F6D94 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				136A03D325692809004F6D94 /* Constant.swift */,
+				136A03D725692824004F6D94 /* StoryboardId.swift */,
+				136A03DD2569298A004F6D94 /* UI.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -151,6 +169,7 @@
 			children = (
 				136A03C22568F92F004F6D94 /* HomeController.swift */,
 				136A03BF2568F924004F6D94 /* HomeViewModel.swift */,
+				136A03DA25692954004F6D94 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -173,6 +192,24 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		15D8B37A83EB861718A814C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				313E0836F2709EF68E2942E5 /* Pods-SpaceXLaunches.debug.xcconfig */,
+				D3C0290723832ABC09E54074 /* Pods-SpaceXLaunches.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A653250158D0578947208C75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C420B00D11DE5AD3D3890C64 /* Pods_SpaceXLaunches.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 136A03A82568F832004F6D94 /* Build configuration list for PBXNativeTarget "SpaceXLaunches" */;
 			buildPhases = (
+				F7A199590C86DF305567B6BA /* [CP] Check Pods Manifest.lock */,
 				136A03902568F82F004F6D94 /* Sources */,
 				136A03912568F82F004F6D94 /* Frameworks */,
 				136A03922568F82F004F6D94 /* Resources */,
+				44689DA2117B1D2F43106298 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -238,18 +277,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44689DA2117B1D2F43106298 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpaceXLaunches/Pods-SpaceXLaunches-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpaceXLaunches/Pods-SpaceXLaunches-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SpaceXLaunches/Pods-SpaceXLaunches-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7A199590C86DF305567B6BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpaceXLaunches-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		136A03902568F82F004F6D94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				136A03982568F82F004F6D94 /* AppDelegate.swift in Sources */,
+				136A03D825692824004F6D94 /* StoryboardId.swift in Sources */,
 				136A03BA2568F90A004F6D94 /* DetailController.swift in Sources */,
 				136A03CD25690B19004F6D94 /* Endpoint.swift in Sources */,
 				136A03C32568F92F004F6D94 /* HomeController.swift in Sources */,
 				136A039A2568F82F004F6D94 /* SceneDelegate.swift in Sources */,
+				136A03DB25692954004F6D94 /* HomeTableViewCell.swift in Sources */,
 				136A03D125690CAA004F6D94 /* Service.swift in Sources */,
 				136A03C92568FD5E004F6D94 /* Launch.swift in Sources */,
+				136A03DE2569298A004F6D94 /* UI.swift in Sources */,
+				136A03D425692809004F6D94 /* Constant.swift in Sources */,
 				136A03C02568F924004F6D94 /* HomeViewModel.swift in Sources */,
 				136A03BD2568F918004F6D94 /* DetailViewModel.swift in Sources */,
 			);
@@ -395,6 +480,7 @@
 		};
 		136A03A92568F832004F6D94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 313E0836F2709EF68E2942E5 /* Pods-SpaceXLaunches.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -416,6 +502,7 @@
 		};
 		136A03AA2568F832004F6D94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3C0290723832ABC09E54074 /* Pods-SpaceXLaunches.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
