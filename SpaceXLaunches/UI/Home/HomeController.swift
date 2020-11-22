@@ -59,28 +59,27 @@ class HomeController: UIViewController {
     
     // Inits
     setActivityIndicator()
-    loadFirstTwentyLaunches()
+    initialLoad()
     createToolbar()
   }
   
   // MARK: Functions
   
-  func loadFirstTwentyLaunches() {
+  func initialLoad() {
     // When app starts, we are fetching all the launches but showing the first 20 launches
     // As user scrolls more content will shown
     viewModel.fetchLaunches { (result) in
       switch result {
         case .success(let launches):
           self.allLaunches = launches
+          self.copyOfLaunches = launches
+          
           self.setPickerViewData(launches)
-          var i = 0
-          while i < 20 {
-            self.launches.append(self.allLaunches[i])
-            i += 1
-          }
+          self.loadFirstTwentyLaunch()
+          
           self.filterBarButton.isEnabled = true
-          self.copyOfLaunches = self.allLaunches
           self.activityIndicator.stopAnimating()
+          
           self.tableView.reloadData()
         case .failure(let error):
           print(error, #line, #file)
@@ -94,6 +93,7 @@ class HomeController: UIViewController {
     activityIndicator.startAnimating()
     view.addSubview(activityIndicator)
   }
+  
   /// Create ToolBar for filter PickerView
   func createToolbar() {
     let toolBar = UIToolbar()
@@ -107,6 +107,7 @@ class HomeController: UIViewController {
     let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     
     let titleButton = UIBarButtonItem(title: "Select Year To Filter", style: .plain, target: self, action: nil)
+    // Make button looks like title
     titleButton.isEnabled = false
     
     toolBar.setItems([cancelButton, spaceButton, titleButton, spaceButton, doneButton], animated: true)
@@ -121,10 +122,13 @@ class HomeController: UIViewController {
   
   @objc func clearFilter() {
     view.endEditing(true)
-    launches = allLaunches
-    tableView.reloadData()
+    launches = []
+    numberOfPage = 2
+    loadFirstTwentyLaunch()
     isFilterOn = false
+    tableView.reloadData()
   }
+  
   /// Get all "Year" data from api and append to pickerViewData if does not added before
   func setPickerViewData(_ allLaunches: [Launch]) {
     for launch in allLaunches {
@@ -134,11 +138,19 @@ class HomeController: UIViewController {
     }
   }
   
+  func loadFirstTwentyLaunch() {
+    var i = 0
+    while i < 20 {
+      self.launches.append(self.copyOfLaunches[i])
+      i += 1
+    }
+    tableView.reloadData()
+  }
+  
   // MARK: Actions
   
   @IBAction func filterBarButtonPressed(_ sender: UIBarButtonItem) {
     hiddenTextField.becomeFirstResponder()
-    launches = copyOfLaunches
   }
   
 }
@@ -163,28 +175,24 @@ extension HomeController: UITableViewDelegate {
         for i in 20...40 {
           launches.append(allLaunches[i])
         }
-        copyOfLaunches = launches
         numberOfPage = 3
         tableView.reloadData()
       } else if numberOfPage == 3 && isFilterOn != true {
         for i in 41...60 {
           launches.append(allLaunches[i])
         }
-        copyOfLaunches = launches
         numberOfPage = 4
         tableView.reloadData()
       } else if numberOfPage == 4 && isFilterOn != true {
         for i in 61...80 {
           launches.append(allLaunches[i])
         }
-        copyOfLaunches = launches
         numberOfPage = 5
         tableView.reloadData()
       } else if numberOfPage == 5  && isFilterOn != true {
         for i in 81..<allLaunches.count {
           launches.append(allLaunches[i])
         }
-        copyOfLaunches = launches
         numberOfPage = 6
         tableView.reloadData()
       }
@@ -247,7 +255,7 @@ extension HomeController: UIPickerViewDelegate, UIPickerViewDataSource {
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    let filteredLaunches = copyOfLaunches.filter { $0.launchYear == pickerViewData[row] }
+    let filteredLaunches = allLaunches.filter { $0.launchYear == pickerViewData[row] }
     launches = filteredLaunches
     
     isFilterOn = true
