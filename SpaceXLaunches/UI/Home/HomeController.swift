@@ -22,6 +22,17 @@ class HomeController: UIViewController {
   var numberOfPage = 2
   /// Activity indicator for show to user while fetching the data from api
   let activityIndicator = UIActivityIndicatorView(style: .large)
+  /// PickerView init
+  let pickerView = UIPickerView()
+  /// PickerView datas from api
+  var pickerViewData: [String] = []
+  /// For showing the PickerView
+  let hiddenTextField = UITextField()
+  /// Copy every time launches loaded, for filtering purpose
+  var copyOfLaunches: [Launch] = []
+  /// Flag for is filtering currently
+  var isFilterOn: Bool = false
+  
   
   // MARK: Outlets
   
@@ -34,26 +45,41 @@ class HomeController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     
+    pickerView.delegate = self
+    pickerView.dataSource = self
+    
+    self.view.addSubview(hiddenTextField)
+    hiddenTextField.isHidden = true
+    hiddenTextField.inputView = pickerView
+    
+    filterBarButton.isEnabled = false
+    
     navigationItem.title = "Launches"
+    navigationController?.navigationBar.prefersLargeTitles  = true
     
     // Inits
     setActivityIndicator()
     loadFirstTwentyLaunches()
+    createToolbar()
   }
   
   // MARK: Functions
   
   func loadFirstTwentyLaunches() {
-    // When app starts, we are fetching the first 20 launches
+    // When app starts, we are fetching all the launches but showing the first 20 launches
+    // As user scrolls more content will shown
     viewModel.fetchLaunches { (result) in
       switch result {
         case .success(let launches):
           self.allLaunches = launches
+          self.setPickerViewData(launches)
           var i = 0
           while i < 20 {
             self.launches.append(self.allLaunches[i])
             i += 1
           }
+          self.filterBarButton.isEnabled = true
+          self.copyOfLaunches = self.allLaunches
           self.activityIndicator.stopAnimating()
           self.tableView.reloadData()
         case .failure(let error):
@@ -63,21 +89,56 @@ class HomeController: UIViewController {
   }
   
   func setActivityIndicator() {
-    // Place the activity indicator on the center of your current screen
     activityIndicator.center = view.center
-    
-    // In most cases this will be set to true, so the indicator hides when it stops spinning
     activityIndicator.hidesWhenStopped = true
-    
-    // Start the activity indicator and place it onto your view
     activityIndicator.startAnimating()
     view.addSubview(activityIndicator)
+  }
+  /// Create ToolBar for filter PickerView
+  func createToolbar() {
+    let toolBar = UIToolbar()
+    toolBar.barStyle = .default
+    toolBar.sizeToFit()
+    
+    let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissPicker))
+    
+    let cancelButton = UIBarButtonItem(title: "Clear Filter", style: .plain, target: self, action: #selector(clearFilter))
+    
+    let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    
+    let titleButton = UIBarButtonItem(title: "Select Year To Filter", style: .plain, target: self, action: nil)
+    titleButton.isEnabled = false
+    
+    toolBar.setItems([cancelButton, spaceButton, titleButton, spaceButton, doneButton], animated: true)
+    
+    toolBar.isUserInteractionEnabled = true
+    hiddenTextField.inputAccessoryView = toolBar
+  }
+  
+  @objc func dismissPicker() {
+    view.endEditing(true)
+  }
+  
+  @objc func clearFilter() {
+    view.endEditing(true)
+    launches = allLaunches
+    tableView.reloadData()
+    isFilterOn = false
+  }
+  /// Get all "Year" data from api and append to pickerViewData if does not added before
+  func setPickerViewData(_ allLaunches: [Launch]) {
+    for launch in allLaunches {
+      if !self.pickerViewData.contains(launch.launchYear ?? "Unknown" ) {
+        self.pickerViewData.append(launch.launchYear ?? "Unknown" )
+      }
+    }
   }
   
   // MARK: Actions
   
   @IBAction func filterBarButtonPressed(_ sender: UIBarButtonItem) {
-    
+    hiddenTextField.becomeFirstResponder()
+    launches = copyOfLaunches
   }
   
 }
@@ -98,20 +159,32 @@ extension HomeController: UITableViewDelegate {
     // When the user has scrolled past the threshold, start loading more
     if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
       
-      if numberOfPage == 2 {
-        launches.append(contentsOf: allLaunches[20...40])
+      if numberOfPage == 2 && isFilterOn != true {
+        for i in 20...40 {
+          launches.append(allLaunches[i])
+        }
+        copyOfLaunches = launches
         numberOfPage = 3
         tableView.reloadData()
-      } else if numberOfPage == 3 {
-        launches.append(contentsOf: allLaunches[41...60])
+      } else if numberOfPage == 3 && isFilterOn != true {
+        for i in 41...60 {
+          launches.append(allLaunches[i])
+        }
+        copyOfLaunches = launches
         numberOfPage = 4
         tableView.reloadData()
-      } else if numberOfPage == 4 {
-        launches.append(contentsOf: allLaunches[61...80])
+      } else if numberOfPage == 4 && isFilterOn != true {
+        for i in 61...80 {
+          launches.append(allLaunches[i])
+        }
+        copyOfLaunches = launches
         numberOfPage = 5
         tableView.reloadData()
-      } else if numberOfPage == 5 {
-        launches.append(contentsOf: allLaunches[81...])
+      } else if numberOfPage == 5  && isFilterOn != true {
+        for i in 81..<allLaunches.count {
+          launches.append(allLaunches[i])
+        }
+        copyOfLaunches = launches
         numberOfPage = 6
         tableView.reloadData()
       }
@@ -154,6 +227,31 @@ extension HomeController: UITableViewDataSource {
     }
     
     return cell
+  }
+  
+}
+
+// MARK: - UIPickerViewDelegate
+
+extension HomeController: UIPickerViewDelegate, UIPickerViewDataSource {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return pickerViewData.count
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return pickerViewData[row]
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    let filteredLaunches = copyOfLaunches.filter { $0.launchYear == pickerViewData[row] }
+    launches = filteredLaunches
+    
+    isFilterOn = true
+    tableView.reloadData()
   }
   
 }
