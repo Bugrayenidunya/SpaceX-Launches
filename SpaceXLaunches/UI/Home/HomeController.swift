@@ -107,6 +107,7 @@ class HomeController: UIViewController {
     let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     
     let titleButton = UIBarButtonItem(title: "Select Year To Filter", style: .plain, target: self, action: nil)
+    // Make button looks like title
     titleButton.isEnabled = false
     
     toolBar.setItems([cancelButton, spaceButton, titleButton, spaceButton, doneButton], animated: true)
