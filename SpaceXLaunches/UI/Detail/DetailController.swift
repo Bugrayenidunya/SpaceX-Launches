@@ -104,14 +104,13 @@ class DetailController: UIViewController {
         // Video Link
           launchVideoLink = videoLink
         // Launch Success
-        if launchSuccess {
+        if launchSuccess != false {
           launchSuccessLabel.text = "Successfully Launched"
         } else if launchSuccess != true {
           launchSuccessLabel.text = "Launch Failed"
-          return
+        } else {
+          launchSuccessLabel.text = "No Data Available"
         }
-        launchSuccessLabel.text = "No Data Available"
-        
       }
     }
   }
