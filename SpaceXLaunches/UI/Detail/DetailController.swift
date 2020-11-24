@@ -70,26 +70,34 @@ class DetailController: UIViewController {
   // MARK: Functions
   
   func configureViews() {
-    linkView.backgroundColor = UIColor.systemGroupedBackground
+    linkView.backgroundColor = UIColor.secondarySystemBackground
     linkView.layer.cornerRadius = 4
     
-    seperatorLineView.backgroundColor = UIColor.systemGroupedBackground
-    seperatorLineView.layer.borderColor = UIColor.systemGroupedBackground.cgColor
+    seperatorLineView.backgroundColor = UIColor.secondarySystemBackground
+    seperatorLineView.layer.borderColor = UIColor.secondarySystemBackground.cgColor
     seperatorLineView.layer.borderWidth = 1
+    
+    launchDetailTextView.isScrollEnabled = false
+    launchDetailTextView.translatesAutoresizingMaskIntoConstraints = false
+    launchDetailTextView.sizeToFit()
   }
   
   func initLaunch() {
     if let launch = launch {
-      if let detail = launch.details, let articleLink = launch.links?.articleLink, let videoLink = launch.links?.videoLink, let launchYear = launch.launchYear, let missionName = launch.missionName, let launchSuccess = launch.launchSuccess {
+      if let articleLink = launch.links?.articleLink, let videoLink = launch.links?.videoLink, let launchYear = launch.launchYear, let missionName = launch.missionName, let launchSuccess = launch.launchSuccess {
         // Detail
-        launchDetailTextView.text = detail
+        if launch.details != nil {
+          launchDetailTextView.text = launch.details
+        } else {
+          launchDetailTextView.text = "No Detail Found. See article link above."
+        }
         // Launch Year
         launchYearLabel.text = launchYear
         // Mission Name
         if missionName.isEmpty != true {
           launchMissionNameLabel.text = missionName
         } else {
-          launchMissionNameLabel.text = "Not Available"
+          launchMissionNameLabel.text = "No Data Available"
         }
         // Article Link
           launchArticleLink = articleLink
@@ -98,9 +106,12 @@ class DetailController: UIViewController {
         // Launch Success
         if launchSuccess {
           launchSuccessLabel.text = "Successfully Launched"
+        } else if launchSuccess != true {
+          launchSuccessLabel.text = "Launch Failed"
           return
         }
-        launchSuccessLabel.text = "Launch Failed"
+        launchSuccessLabel.text = "No Data Available"
+        
       }
     }
   }
