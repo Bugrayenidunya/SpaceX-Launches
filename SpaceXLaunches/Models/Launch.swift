@@ -7,20 +7,20 @@
 
 import Foundation
 
-// MARK: - Launch
+// MARK: - Launch Model
 
 struct Launch: Codable {
-  // Properties
-  var flightNumber: Int?
-  var launchSuccess: Bool?
-  var missionName: String?
-  var details: String?
-  var launchYear, launchDateUTC, launchDateLocal: String?
-  var links: Links?
-  var rocket: Rocket?
-  var launchFailureDetails: LaunchFailureDetails?
+  // MARK: Properties
+  let flightNumber: Int?
+  let launchSuccess: Bool?
+  let missionName: String?
+  let details: String?
+  let launchYear, launchDateUTC, launchDateLocal: String?
+  let links: Links?
+  let rocket: Rocket?
+  let launchFailureDetails: LaunchFailureDetails?
   
-  // CodingKeys
+  // MARK: Codingkeys
   enum CodingKeys: String, CodingKey {
     case launchYear = "launch_year"
     case missionName = "mission_name"
@@ -36,29 +36,30 @@ struct Launch: Codable {
   }
 }
 
-// MARK: - Links
+// MARK: - Links Model
 
 struct Links: Codable {
-  // Properties
-  var missionPatch, missionPatchSmall: String?
-  var wikipedia, videoLink: String?
+  // MARK: Properties
+  let missionPatch, missionPatchSmall: String?
+  let wikipedia, videoLink, articleLink: String?
   
-  // CodingKeys
+  // MARK: Codingkeys
   enum CodingKeys: String, CodingKey {
     case videoLink = "video_link"
+    case articleLink = "article_link"
     case missionPatch = "mission_patch"
     case missionPatchSmall = "mission_patch_small"
     case wikipedia
   }
 }
 
-// MARK: - Rocket
+// MARK: - Rocket Model
 
 struct Rocket: Codable {
-  // Properties
-  var rocketID, rocketName, rocketType: String?
+  // MARK: Properties
+  let rocketID, rocketName, rocketType: String?
   
-  // CodingKeys
+  // MARK: Codingkeys
   enum CodingKeys: String, CodingKey {
     case rocketID = "rocket_id"
     case rocketName = "rocket_name"
@@ -66,13 +67,14 @@ struct Rocket: Codable {
   }
 }
 
-// MARK: - LaunchFailureDetails
+// MARK: - LaunchFailureDetails Model
 
 struct LaunchFailureDetails: Codable {
-  // Properties
-  var time: Int?
-  var reason: String?
+  // MARK: Properties
+  let time: Int?
+  let reason: String?
   
+  // MARK: Codingkeys
   enum CodingKeys: String, CodingKey {
     case time
     case reason
