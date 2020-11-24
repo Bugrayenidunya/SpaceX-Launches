@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -125,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				136A03B12568F866004F6D94 /* Constants */,
-				136A03B22568F86D004F6D94 /* Extensions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -138,13 +137,6 @@
 				136A03DD2569298A004F6D94 /* UI.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		136A03B22568F86D004F6D94 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		136A03B32568F878004F6D94 /* Models */ = {
@@ -168,8 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				136A03C22568F92F004F6D94 /* HomeController.swift */,
-				136A03BF2568F924004F6D94 /* HomeViewModel.swift */,
 				136A03DA25692954004F6D94 /* HomeTableViewCell.swift */,
+				136A03BF2568F924004F6D94 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -198,7 +190,6 @@
 				313E0836F2709EF68E2942E5 /* Pods-SpaceXLaunches.debug.xcconfig */,
 				D3C0290723832ABC09E54074 /* Pods-SpaceXLaunches.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

@@ -160,17 +160,25 @@ class HomeController: UIViewController {
 extension HomeController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    
+    /// Single launch
+    let launch = launches[indexPath.row]
+    
+    guard let vc = storyboard?.instantiateViewController(identifier: Constant.StoryboardId.detail) as? DetailController else { return }
+    // Pass data to detail view
+    vc.launch = launch
+    
+    navigationController?.pushViewController(vc, animated: true)
   }
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
     // Calculate the position of one screen length before the bottom of the results
     let scrollViewContentHeight = tableView.contentSize.height
     let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
     
     // When the user has scrolled past the threshold, start loading more
     if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
-      
+      // Check page number and isFilterOn and load more
       if numberOfPage == 2 && isFilterOn != true {
         for i in 20...40 {
           launches.append(allLaunches[i])
@@ -196,7 +204,6 @@ extension HomeController: UITableViewDelegate {
         numberOfPage = 6
         tableView.reloadData()
       }
-      
     }
   }
   
@@ -210,11 +217,12 @@ extension HomeController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+    /// Single launch
     let launch = launches[indexPath.row]
     
     guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.UI.homeTableViewCell) as? HomeTableViewCell else { return UITableViewCell() }
     
+    // Image
     if let url = URL(string: (launch.links?.missionPatchSmall)!) {
       cell.missionPatchImageView.kf.indicatorType = .activity
       cell.missionPatchImageView.kf.setImage(with: url,  options: [
@@ -222,7 +230,7 @@ extension HomeController: UITableViewDataSource {
         .cacheOriginalImage
       ])
     }
-    
+    // Infos
     cell.rocketNameLabel.text = launch.rocket?.rocketName
     cell.launchDateLabel.text = launch.launchYear
     
@@ -255,6 +263,7 @@ extension HomeController: UIPickerViewDelegate, UIPickerViewDataSource {
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    /// Filtered launches by launch year
     let filteredLaunches = allLaunches.filter { $0.launchYear == pickerViewData[row] }
     launches = filteredLaunches
     
